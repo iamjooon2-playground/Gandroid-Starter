@@ -1,23 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    // 추가 원하면 아래같이 background 설정하기
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Gachon!"
-        android:background="@drawable/round_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp">
 
-</LinearLayout>
+        <TableRow>
+
+            <EditText
+                android:id="@+id/Edit1"
+                android:layout_span="5"
+                android:hint="숫자1 입력" />
+        </TableRow>
+
+        <TableRow>
+
+            <EditText
+                android:id="@+id/Edit2"
+                android:layout_span="5"
+                android:hint="숫자2 입력" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/button0"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/button1"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/button2"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/button3"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/button4"
+                android:text="4" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/button5"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/button6"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/button7"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/button8"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/button9"
+                android:text="9" />
+        </TableRow>
+
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_span="5"
+                android:text="더하기"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/buttonSubstract"
+                android:layout_span="5"
+                android:text="빼기"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/buttonMultiply"
+                android:layout_span="5"
+                android:text="곱하기"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/buttonDivide"
+                android:layout_span="5"
+                android:text="나누기"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/TextResult"
+                android:layout_margin="5dp"
+                android:layout_span="5"
+                android:text="결과: "
+                android:textColor="#FF0000"
+                android:textSize="20dp"></TextView>
+        </TableRow>
+
+    </TableLayout>
+
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentTop="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerHorizontal="true"></Button>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentLeft="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerVertical="true"></Button>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerInParent="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentRight="true"></Button>&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:id="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="150dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="150dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerHorizontal="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerVertical="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="기존위젯"&ndash;&gt;-->
+    <!--&lt;!&ndash;        />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignTop="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_toLeftOf="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="1번" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignTop="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_toLeftOf="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="2번" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignTop="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_toLeftOf="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="3번" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_above="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:alignLeft="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="4번" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_allignRight="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:alignLeft="@+id/baseButton"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="5번" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:id="@+id/baseButton1"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentLeft="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentTop="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="기준1" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:id="@+id/baseButton2"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentRight="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_centerVertical="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="기준2" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_above="@+id/baseButton2"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_toRightOf="@+id/baseButton1"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="1번" />&ndash;&gt;-->
+    <!--&lt;!&ndash;    <Button&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_alignParentRight="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_below="@+id/baseButton1"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:text="2번" />&ndash;&gt;-->
+
+</RelativeLayout>
