@@ -10,14 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         // LinearLayout 설정
-        val params = LinearLayout.LayoutParams(
+        var params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
         )
-
         val baseLayout = LinearLayout(this)
 
         baseLayout.orientation = LinearLayout.VERTICAL
@@ -25,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(baseLayout, params)
 
         var button = Button(this)
-        button.text = "버튼입니다"
+        button.text = "201736012 이준희의 버튼입니다"
         button.setBackgroundColor(Color.MAGENTA)
         baseLayout.addView(button)
 
         button.setOnClickListener {
-            Toast.makeText(applicationContext, "코드로 생성한 버튼입니다 데헷", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "코드로 생성한 버튼입니다!", Toast.LENGTH_LONG).show()
         }
 
         showActionBar()
