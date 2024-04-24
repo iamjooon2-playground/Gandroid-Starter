@@ -1,5 +1,7 @@
 package com.example.gandroid
 
+import kotlin.math.pow
+
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,7 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // internal : 같은 모듈 안에서만 생성 가능
+    lateinit internal var num1: String
+    // internal : 같은 모듈 안에서만 생성할 수 있다
     lateinit internal var edit1: EditText;
     lateinit internal var edit2: EditText;
 
@@ -17,9 +20,9 @@ class MainActivity : AppCompatActivity() {
     lateinit internal var buttonSub: Button;
     lateinit internal var buttonMul: Button;
     lateinit internal var buttonDiv: Button;
+    lateinit internal var buttonSquare: Button;
 
     lateinit internal var textResult: TextView;
-    lateinit internal var num1: String
     lateinit internal var num2: String
 
     internal var result: Int? = null
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         initialize()
         setOnTouchListeners()
 
-        for (i in 0..9) {
+        for (i in 0 .. 9) {
             numButtons.add(findViewById(numButtonIds[i]))
         }
 
@@ -64,8 +67,7 @@ class MainActivity : AppCompatActivity() {
                     num2 = edit2.text.toString() + numButtons[i].getText().toString()
                     edit2.setText(num2)
                 } else {
-                    Toast.makeText(applicationContext, "먼저 에디트텍스트를 선택하세요",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,  i.toString() + " 클릭, 먼저 에디트텍스트를 선택하세요", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -96,6 +98,11 @@ class MainActivity : AppCompatActivity() {
             num1 = edit1.text.toString()
             num2 = edit2.text.toString()
 
+            if (num2.equals("0")) {
+                val toast = Toast.makeText(this, "0으로는 나눌 수 없어요", Toast.LENGTH_SHORT)
+                toast.show()
+            }
+
             result = Integer.parseInt(num1) - Integer.parseInt(num2)
             textResult.text = "계산 결과: " + result.toString()
             false
@@ -109,6 +116,15 @@ class MainActivity : AppCompatActivity() {
             textResult.text = "계산 결과: " + result.toString()
             false
         }
+
+        buttonSquare.setOnTouchListener { view, motionEvent ->
+            num1 = edit1.text.toString()
+            num2 = edit2.text.toString()
+
+            var numberResult = num1.toDouble().pow(num2.toDouble())
+            textResult.text = "계산 결과: " + numberResult.toString()
+            false
+        }
     }
 
     private fun initialize() {
@@ -118,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         buttonMul = findViewById(R.id.buttonMultiply)
         buttonDiv = findViewById(R.id.buttonDivide)
         buttonSub = findViewById(R.id.buttonSubstract)
+        buttonSquare = findViewById(R.id.buttonSquare)
         textResult = findViewById(R.id.TextResult)
     }
 

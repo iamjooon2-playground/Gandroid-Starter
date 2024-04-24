@@ -1,129 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    tools:context=".MainActivity"
-    tools:ignore="ExtraText">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp">
+    <TableRow>
 
-        <TableRow>
+        <EditText
+            android:id="@+id/Edit1"
+            android:layout_span="5"
+            android:width="0dp"
+            android:hint="숫자1 입력" />
+    </TableRow>
 
-            <EditText
-                android:id="@+id/Edit1"
-                android:layout_span="5"
-                android:hint="숫자1 입력" />
-        </TableRow>
+    <TableRow>
 
-        <TableRow>
+        <EditText
+            android:id="@+id/Edit2"
+            android:layout_span="5"
+            android:hint="숫자2 입력" />
+    </TableRow>
 
-            <EditText
-                android:id="@+id/Edit2"
-                android:layout_span="5"
-                android:hint="숫자2 입력" />
-        </TableRow>
+    <TableRow>
 
-        <TableRow>
+        <Button
+            android:id="@+id/button0"
+            android:text="0" />
 
-            <Button
-                android:id="@+id/button0"
-                android:text="0" />
+        <Button
+            android:id="@+id/button1"
+            android:text="1" />
 
-            <Button
-                android:id="@+id/button1"
-                android:text="1" />
+        <Button
+            android:id="@+id/button2"
+            android:text="2" />
 
-            <Button
-                android:id="@+id/button2"
-                android:text="2" />
+        <Button
+            android:id="@+id/button3"
+            android:text="3" />
 
-            <Button
-                android:id="@+id/button3"
-                android:text="3" />
+        <Button
+            android:id="@+id/button4"
+            android:text="4" />
+    </TableRow>
 
-            <Button
-                android:id="@+id/button4"
-                android:text="4" />
-        </TableRow>
+    <TableRow>
 
-        <TableRow>
+        <Button
+            android:id="@+id/button5"
+            android:text="5" />
 
-            <Button
-                android:id="@+id/button5"
-                android:text="5" />
+        <Button
+            android:id="@+id/button6"
+            android:text="6" />
 
-            <Button
-                android:id="@+id/button6"
-                android:text="6" />
+        <Button
+            android:id="@+id/button7"
+            android:text="7" />
 
-            <Button
-                android:id="@+id/button7"
-                android:text="7" />
+        <Button
+            android:id="@+id/button8"
+            android:text="8" />
 
-            <Button
-                android:id="@+id/button8"
-                android:text="8" />
-
-            <Button
-                android:id="@+id/button9"
-                android:text="9" />
-        </TableRow>
+        <Button
+            android:id="@+id/button9"
+            android:text="9" />
+    </TableRow>
 
 
-        <TableRow>
+    <TableRow>
 
-            <Button
-                android:id="@+id/buttonAdd"
-                android:layout_span="5"
-                android:text="더하기"></Button>
-        </TableRow>
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_span="5"
+            android:layout_margin="5dp"
+            android:text="더하기"></Button>
+    </TableRow>
 
-        <TableRow>
+    <TableRow>
 
-            <Button
-                android:id="@+id/buttonSubstract"
-                android:layout_span="5"
-                android:text="빼기"></Button>
-        </TableRow>
+        <Button
+            android:id="@+id/buttonSubstract"
+            android:layout_span="5"
+            android:layout_margin="5dp"
+            android:text="빼기"></Button>
+    </TableRow>
 
-        <TableRow>
+    <TableRow>
 
-            <Button
-                android:id="@+id/buttonMultiply"
-                android:layout_span="5"
-                android:text="곱하기"></Button>
-        </TableRow>
+        <Button
+            android:id="@+id/buttonMultiply"
+            android:layout_span="5"
+            android:layout_margin="5dp"
+            android:text="곱하기"></Button>
+    </TableRow>
 
-        <TableRow>
+    <TableRow>
 
-            <Button
-                android:id="@+id/buttonDivide"
-                android:layout_span="5"
-                android:text="나누기"></Button>
-        </TableRow>
+        <Button
+            android:id="@+id/buttonDivide"
+            android:layout_span="5"
+            android:layout_margin="5dp"
+            android:text="나누기"></Button>
+    </TableRow>
 
-        <TableRow>
+    <TableRow>
 
-            <TextView
-                android:id="@+id/TextResult"
-                android:layout_margin="5dp"
-                android:layout_span="5"
-                android:text="결과: "
-                android:textColor="#FF0000"
-                android:textSize="20dp"></TextView>
-        </TableRow>
+        <Button
+            android:id="@+id/buttonSquare"
+            android:layout_span="5"
+            android:layout_margin="5dp"
+            android:text="제곱하기"></Button>
+    </TableRow>
 
-    </TableLayout>
+    <TableRow android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/TextResult"
+            android:layout_margin="5dp"
+            android:layout_span="5"
+            android:text="결과: "
+            android:textColor="#FF0000"
+            android:textSize="20dp"></TextView>
+    </TableRow>
+
+</TableLayout>
 
     <!--&lt;!&ndash;    <Button&ndash;&gt;-->
     <!--&lt;!&ndash;        android:layout_alignParentTop="true"&ndash;&gt;-->
@@ -183,4 +184,4 @@
     <!--&lt;!&ndash;        android:layout_below="@+id/baseButton1"&ndash;&gt;-->
     <!--&lt;!&ndash;        android:text="2번" />&ndash;&gt;-->
 
-</RelativeLayout>
+    <!--</RelativeLayout>-->
