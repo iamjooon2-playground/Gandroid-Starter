@@ -3,21 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    // 추가 원하면 아래같이 background 설정하기
-    <TextView
-        android:layout_width="wrap_content"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello Gachon!"
-        android:background="@drawable/round_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:completionHint="선택하세요"
+        android:completionThreshold="2" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionThreshold="2"
+        android:hint="멀티자동완성텍스트뷰" />
 
 </LinearLayout>
