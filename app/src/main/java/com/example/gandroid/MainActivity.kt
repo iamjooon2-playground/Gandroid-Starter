@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun findViewByIds() {
-        title = "시간 예약"
+        title = "이준희의 시간 예약"
 
         buttonStart = findViewById(R.id.buttonStart)
         buttonEnd = findViewById(R.id.buttonEnd)
