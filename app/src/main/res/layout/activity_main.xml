@@ -10,11 +10,6 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="오른쪽 위 메뉴 버튼을 누르세용" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

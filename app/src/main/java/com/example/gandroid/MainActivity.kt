@@ -21,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = "이준희의 배경색 변경~"
+        title = "이준희의 컨텍스트 메뉴"
 
         baseLayout = findViewById(R.id.baseLayout)
+
         button1 = findViewById(R.id.button)
         registerForContextMenu(button1)
 
@@ -31,58 +32,6 @@ class MainActivity : AppCompatActivity() {
         registerForContextMenu(button2)
 
         showActionBar()
-    }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        super.onCreateOptionsMenu(menu)
-//        var minimunFlater = menuInflater
-//        minimunFlater.inflate(R.menu.menu, menu)
-//        minimunFlater.inflate(R.menu.menu2, menu)
-//        return true
-//    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            1 -> {
-                baseLayout.setBackgroundColor(Color.RED)
-                return true
-            }
-            R.id.itemRed -> {
-                baseLayout.setBackgroundColor(Color.RED)
-                return true
-            }
-            R.id.itemGreen -> {
-                baseLayout.setBackgroundColor(Color.GREEN)
-                return true
-            }
-            R.id.itemBlue -> {
-                baseLayout.setBackgroundColor(Color.BLUE)
-                return true
-            }
-            R.id.subRotate -> {
-                button1.rotation = 45f
-                return true
-            }
-            R.id.subSize -> {
-                button1.rotation = 2f
-                return true
-            }
-        }
-        return false
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        super.onCreateOptionsMenu(menu)
-
-        menu!!.add(0, 1, 0, "배경색(빨강)")
-        menu!!.add(0, 2, 0, "배경색(초록)")
-        menu!!.add(0, 3, 0, "배경색(파랑)")
-
-        var subMenu : SubMenu = menu.addSubMenu("버튼 변경 >>")
-        subMenu.add(0, 4, 0, "버튼 변경 >> ")
-        subMenu.add(0, 5, 0, "버튼 2배 확대 >> ")
-
-        return true
     }
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
