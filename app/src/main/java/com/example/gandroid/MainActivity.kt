@@ -2,18 +2,20 @@ package com.example.gandroid
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.SubMenu
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.math.min
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var baseLayout: LinearLayout
-    lateinit var button: Button
+    lateinit var button1: Button
+    lateinit var button2: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,17 +24,22 @@ class MainActivity : AppCompatActivity() {
         title = "이준희의 배경색 변경~"
 
         baseLayout = findViewById(R.id.baseLayout)
-        button = findViewById(R.id.button)
+        button1 = findViewById(R.id.button)
+        registerForContextMenu(button1)
+
+        button2 = findViewById(R.id.button2)
+        registerForContextMenu(button2)
 
         showActionBar()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        super.onCreateOptionsMenu(menu)
-        var minimunFlater = menuInflater
-        minimunFlater.inflate(R.menu.menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        super.onCreateOptionsMenu(menu)
+//        var minimunFlater = menuInflater
+//        minimunFlater.inflate(R.menu.menu, menu)
+//        minimunFlater.inflate(R.menu.menu2, menu)
+//        return true
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -53,11 +60,11 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             R.id.subRotate -> {
-                button.rotation = 45f
+                button1.rotation = 45f
                 return true
             }
             R.id.subSize -> {
-                button.rotation = 2f
+                button1.rotation = 2f
                 return true
             }
         }
@@ -76,6 +83,19 @@ class MainActivity : AppCompatActivity() {
         subMenu.add(0, 5, 0, "버튼 2배 확대 >> ")
 
         return true
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+
+        var mInflater = this.menuInflater
+        if (v === button1) {
+            menu!!.setHeaderTitle("배경색 변경")
+            mInflater.inflate(R.menu.menu, menu)
+        }
+        if (v === button2) {
+            mInflater.inflate(R.menu.menu2, menu)
+        }
     }
 
     private fun showActionBar() {
