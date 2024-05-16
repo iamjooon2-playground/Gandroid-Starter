@@ -10,24 +10,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        title = "이준희의 라디오 박스"
+
         var button = findViewById<Button>(R.id.button)
 
+        var focus = 0
         button.setOnClickListener {
-            var versions = arrayOf("오레오", "파이", "큐(10)")
-            var checkArray = booleanArrayOf(true, false, false)
+            val versions = arrayOf("코틀린", "자바", "스칼라")
 
             var dialog = AlertDialog.Builder(this@MainActivity)
 
-            dialog.setTitle("좋아하는 버전은?")
+            dialog.setTitle("가장 좋아하는 프로그래밍 언어는?")
             dialog.setIcon(R.mipmap.ic_launcher)
-//            dialog.setItems(versions) { dialog, index ->
-//                button.text = versions[index]
-//            }
-            dialog.setMultiChoiceItems(versions, checkArray) { dialog, index, isChecked ->
+
+            dialog.setSingleChoiceItems(versions, focus) { dialog, index ->
                 button.text = versions[index]
+                focus = index;
             }
 
-            dialog.setPositiveButton("닫기", null)
+            dialog.setPositiveButton("저장하기", null)
             dialog.show()
         }
 
