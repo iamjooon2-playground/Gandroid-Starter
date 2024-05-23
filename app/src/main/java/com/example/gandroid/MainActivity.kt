@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             // 달도 0달부터 세나?
             fileName = Integer.toString(year) + "_" + Integer.toString(monthOfYear + 1) + "_" + Integer.toString(dayOfMonth) + ".txt"
             var str = readDiary(fileName)
-            editText.setTextColor(t)
+            editText.setText(str)
         }
 
         writeButton.setOnClickListener {
@@ -68,8 +68,6 @@ class MainActivity : AppCompatActivity() {
         }
         return diaryString;
     }
-
-
 
     private fun showActionBar() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
