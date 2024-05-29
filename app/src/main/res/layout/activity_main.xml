@@ -9,8 +9,6 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    // 추가 원하면 아래같이 background 설정하기
-
     <Button
         android:id="@+id/buttonWrite"
         android:layout_width="match_parent"

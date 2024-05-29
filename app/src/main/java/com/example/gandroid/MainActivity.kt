@@ -14,13 +14,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "이준희의 읽기 쓰기~"
 
         var buttonRead: Button = findViewById<Button>(R.id.buttonRead)
         var buttonWrite: Button = findViewById<Button>(R.id.buttonWrite)
 
         buttonWrite.setOnClickListener {
             var outFs: FileOutputStream = openFileOutput("file.text", Context.MODE_PRIVATE)
-            var str = "쿡북 안드로이드"
+            var str = "이준희의 읽기 쓰기"
 
             outFs.write(str.toByteArray())
 
