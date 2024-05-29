@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = "이준희의 파일처리"
+        title = "이준희의 파일읽기"
 
         ActivityCompat.requestPermissions(
             this,
