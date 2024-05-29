@@ -15,14 +15,19 @@ class MainActivity : AppCompatActivity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "이준희의 파일처리"
+
         ActivityCompat.requestPermissions(
             this,
             arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
             Context.MODE_PRIVATE
         )
 
-        var readButton = findViewById<Button>(R.id.readButton)
-        var editSD = findViewById<EditText>(R.id.editSd)
+        var readButtonList : Button
+        var editSDList :EditText
+
+        readButtonList = findViewById<Button>(R.id.readButton)
+        editSDList = findViewById<EditText>(R.id.editSd)
 
         var makeButton = findViewById<Button>(R.id.makeButton)
         var deleteButton = findViewById<Button>(R.id.deleteButton)
@@ -30,11 +35,11 @@ class MainActivity : AppCompatActivity() {
         var strSDpath = Environment.getExternalStorageDirectory().absolutePath
         var myDirectory = File("$strSDpath/mydir")
 
-        readButton.setOnClickListener {
+        readButtonList.setOnClickListener {
             var inFs = FileInputStream("/storage/emulated/0/sd_test.txt")
             var txt = ByteArray(inFs.available())
             inFs.read(txt)
-            editSD.setText(txt.toString(Charsets.UTF_8))
+            editSDList.setText(txt.toString(Charsets.UTF_8))
             inFs.close()
         }
 
