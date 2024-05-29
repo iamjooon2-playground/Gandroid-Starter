@@ -9,15 +9,15 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    // 추가 원하면 아래같이 background 설정하기
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonFileList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello Gachon!"
-        android:background="@drawable/round_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="시스템 폴더의 폴더/파일 목록"
+        />
+    <EditText
+        android:id="@+id/editFileList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
