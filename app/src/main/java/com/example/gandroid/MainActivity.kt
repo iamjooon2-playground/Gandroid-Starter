@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.io.FileInputStream
 import java.io.IOException
@@ -33,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         var day = cal.get(Calendar.DAY_OF_MONTH)
 
         datePicker.init(year, month, day) { view, year, monthOfYear, dayOfMonth ->
-            // 달도 0달부터 세나?
             fileName = Integer.toString(year) + "_" + Integer.toString(monthOfYear + 1) + "_" + Integer.toString(dayOfMonth) + ".txt"
             var str = readDiary(fileName)
             editText.setText(str)
@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
             outFs.write(str.toByteArray())
             outFs.close()
 
-            // 토스트 메시지 띄우기
+            Toast.makeText(applicationContext, "$fileName 이 저장 됨", Toast.LENGTH_SHORT)
+                .show()
         }
 
         showActionBar()

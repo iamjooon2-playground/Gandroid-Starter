@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     tools:context=".MainActivity"
@@ -11,20 +11,22 @@
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:calendarViewShown="false" />
 
     <EditText
         android:id="@+id/editDiary"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lines="8"
         android:background="#00ff00" />
 
     <Button
         android:id="@+id/buttonWrite"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Button"
         android:enabled="false" />
 
 </LinearLayout>
