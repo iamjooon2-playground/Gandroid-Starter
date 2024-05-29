@@ -4,44 +4,63 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Environment
 import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
+    lateinit var buttonPrev: Button
+    lateinit var buttonNext: Button
+    lateinit var myPicture: PictureView
+
+    var currentNumber: Int = 0
+    var imageFiles: Array<File>? = null
+
+    lateinit var imageFname: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "이준희의 간단 이미지 뷰어"
+
         ActivityCompat.requestPermissions(
             this,
             arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
             Context.MODE_PRIVATE
         )
-        title = "파일 계층 구조"
 
-        var buttonList: Button
-        var editFileList: EditText
+        buttonPrev = findViewById(R.id.prev)
+        buttonNext = findViewById(R.id.next)
+        myPicture = findViewById(R.id.PictureView)
 
-        buttonList = findViewById<Button>(R.id.buttonFileList)
-        editFileList = findViewById<EditText>(R.id.editFileList)
+        imageFiles = File("/storage/emulated/0/temp-picture").listFiles()
+        imageFname = imageFiles!![0].toString()
+        myPicture.imagePath = imageFname
 
-        buttonList.setOnClickListener {
-            var sysDir = Environment.getRootDirectory().absolutePath
-            var sysFiles = File(sysDir).listFiles()
-
-            var strFileName: String
-            for (i in sysFiles.indices) {
-                if (sysFiles[i].isDirectory) {
-                    strFileName = "<폴더> : " + sysFiles[i].toString()
-                } else {
-                    strFileName = "<파일> : " + sysFiles[i].toString()
-                }
-                editFileList.setText(editFileList.text.toString() + "\n" + strFileName)
+        buttonPrev.setOnClickListener {
+            if (currentNumber <= 0) {
+                Toast.makeText(applicationContext, "첫 그림이에요~", Toast.LENGTH_LONG).show()
+            } else {
+                currentNumber -= 1
+                imageFname = imageFiles!![currentNumber].toString()
+                myPicture.imagePath = imageFname
+                myPicture.invalidate()
             }
         }
 
-        showActionBar()
+        buttonNext.setOnClickListener {
+            if (currentNumber >= imageFiles!!.size - 1) {
+                Toast.makeText(applicationContext, "마지막 그림이에요~", Toast.LENGTH_LONG).show()
+            } else {
+                currentNumber += 1
+                imageFname = imageFiles!![currentNumber].toString()
+                myPicture.imagePath = imageFname
+                myPicture.invalidate()
+            }
+        }
     }
 
     private fun showActionBar() {

@@ -3,21 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    <Button
-        android:id="@+id/buttonFileList"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="시스템 폴더의 폴더/파일 목록"
-        />
-    <EditText
-        android:id="@+id/editFileList"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이전 그림" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음 그림" />
+    </LinearLayout>
+
+    <com.example.gandroid.PictureView
+        android:id="@+id/PictureView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
