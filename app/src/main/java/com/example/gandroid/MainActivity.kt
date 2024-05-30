@@ -4,12 +4,14 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.Rect
-import android.graphics.RectF
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gandroid.MainActivity.Companion.CIRCLE
+import com.example.gandroid.MainActivity.Companion.LINE
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +30,28 @@ class MainActivity : AppCompatActivity() {
         showActionBar()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menu!!.add(0, 1, 0, "선 그리기")
+        menu!!.add(0, 2, 0, "원 그리기")
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            1 -> {
+                currentShape = LINE
+                return true
+            }
+
+            2 -> {
+                currentShape = CIRCLE
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun showActionBar() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_launcher_background)
@@ -37,46 +61,52 @@ class MainActivity : AppCompatActivity() {
 
 private class MyGraphicView(context: Context) : View(context) {
 
+    var startX = -1f
+    var startY = -1f
+    var stopX = -1f
+    var stopY = -1f
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event!!.action) {
+            MotionEvent.ACTION_DOWN -> {
+                startX = event.x
+                startY = event.y
+            }
+
+            MotionEvent.ACTION_MOVE, MotionEvent.ACTION_UP -> {
+                stopX = event.x
+                stopY = event.y
+                this.invalidate()
+            }
+        }
+        return true
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val paint = Paint()
+
         paint.isAntiAlias = true
-        paint.color = Color.GREEN
-        canvas.drawLine(10f, 10f, 300f, 10f, paint)
-
-        paint.color = Color.BLUE
         paint.strokeWidth = 5f
-        canvas.drawLine(10f, 30f, 300f, 30f, paint)
-
-        paint.color = Color.RED
-        paint.strokeWidth = 0f
-
-        paint.style = Paint.Style.FILL
-        var rectangle1 = Rect(10, 50, 10 + 100, 50 + 100)
-        canvas.drawRect(rectangle1, paint)
-
         paint.style = Paint.Style.STROKE
-        val rectangle2 = Rect(130, 50, 130 + 100, 50 + 100)
-        canvas.drawRect(rectangle2, paint)
+        paint.color = Color.RED
 
-        var rectangle3 = RectF(250f, 50f, 250f + 100f, 50f + 100f)
-        canvas.drawRoundRect(rectangle3, 20f, 20f, paint)
+        when (MainActivity.currentShape) {
+            LINE -> canvas.drawLine(
+                startX,
+                startY,
+                stopX,
+                stopY,
+                paint
+            )
 
-        canvas.drawCircle(60f, 220f, 50f, paint)
-
-        paint.strokeWidth = 5f
-        val path1 = Path()
-        path1.moveTo(10f, 290f)
-        path1.lineTo(10f + 50f, 290f + 50f)
-        path1.lineTo(10f + 100f, 290f)
-        path1.lineTo(10f + 150f, 290f + 50f)
-        path1.lineTo(10f + 200f, 290f)
-        canvas.drawPath(path1, paint)
-
-        paint.strokeWidth = 0f
-        paint.textSize = 30f
-        canvas.drawText(
-            "이수경 교수님과 함께하는 모프!", 10f, 390f, paint
-        )
+            CIRCLE -> {
+                var radius = Math.sqrt(
+                    Math.pow((stopX - startX).toDouble(), 2.0)
+                            + Math.pow((stopY - startY).toDouble(), 2.0)
+                )
+                canvas.drawCircle(startX, startY, radius.toFloat(), paint)
+            }
+        }
     }
 }
