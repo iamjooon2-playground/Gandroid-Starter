@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
@@ -32,19 +33,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(MyGraphicView(this))
+        setContentView(R.layout.activity_main)
         title = "이준희의 미니 포토샵"
 
         var pictureLayout = findViewById<LinearLayout>(R.id.pictureLayout)
         graphicView = MyGraphicView(this)
         pictureLayout.addView(graphicView)
 
-        clickIcons()
+        temp()
 
         showActionBar()
     }
 
-    fun clickIcons() {
+    private fun temp() {
         ibZoomIn = findViewById(R.id.ibZoomIn)
         ibZoomIn.setOnClickListener {
             sX += 0.2f
@@ -88,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun showActionBar() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_launcher_background)
@@ -98,21 +100,32 @@ class MainActivity : AppCompatActivity() {
 
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
-            var picture = BitmapFactory.decodeResource(resources, R.drawable.gachon)
+            var picture = BitmapFactory.decodeResource(resources, R.drawable.junhee)
 
             var picX = (this.width - picture.width) / 2f
             var picY = (this.height - picture.height) / 2f
 
-            var paint = Paint()
-            var array = floatArrayOf(
+            var cenX = this.width / 2f
+            var cenY = this.height / 2f
+            canvas.scale(sX, sY, cenX, cenY)
+
+            canvas.drawBitmap(picture, picX, picY, null)
+            canvas.rotate(angle, cenX, cenY)
+
+            val paint = Paint()
+            val array = floatArrayOf(
                 color, 0f, 0f, 0f, 0f,
                 0f, color, 0f, 0f, 0f,
                 0f, 0f, color, 0f, 0f,
                 0f, 0f, 0f, 1f, 0f
-            )
-            val colorMatrix = ColorMatrix(array)
+                )
+            val cm = ColorMatrix(array)
+            paint.colorFilter = ColorMatrixColorFilter(cm)
 
             canvas.drawBitmap(picture, picX, picY, paint)
+            if (satur == 0f) {
+                cm.setSaturation(satur)
+            }
 
             picture.recycle()
         }
