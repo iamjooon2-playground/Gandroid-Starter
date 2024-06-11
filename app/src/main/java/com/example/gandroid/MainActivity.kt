@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Path
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,12 +13,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gandroid.MainActivity.Companion.CIRCLE
 import com.example.gandroid.MainActivity.Companion.LINE
+import com.example.gandroid.MainActivity.Companion.RECTANGLE
+import com.example.gandroid.MainActivity.Companion.TRIANGLE
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
         const val LINE: Int = 1
         const val CIRCLE: Int = 2
+        const val RECTANGLE: Int = 3
+        const val TRIANGLE: Int = 4
         var currentShape = LINE
     }
 
@@ -34,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreateOptionsMenu(menu)
         menu!!.add(0, 1, 0, "선 그리기")
         menu!!.add(0, 2, 0, "원 그리기")
+        menu!!.add(0, 3, 0, "사각형 그리기")
+        menu!!.add(0, 4, 0, "삼각형 그리기")
         return true
     }
 
@@ -46,6 +53,16 @@ class MainActivity : AppCompatActivity() {
 
             2 -> {
                 currentShape = CIRCLE
+                return true
+            }
+
+            3 -> {
+                currentShape = RECTANGLE
+                return true
+            }
+
+            4 -> {
+                currentShape = TRIANGLE
                 return true
             }
         }
@@ -107,6 +124,30 @@ private class MyGraphicView(context: Context) : View(context) {
                 )
                 canvas.drawCircle(startX, startY, radius.toFloat(), paint)
             }
+
+            RECTANGLE -> {
+                val left = Math.min(startX, stopX)
+                val right = Math.max(startX, stopX)
+                val top = Math.min(startY, stopY)
+                val bottom = Math.max(startY, stopY)
+                canvas.drawRect(
+                    left,
+                    top,
+                    right,
+                    bottom,
+                    paint
+                )
+            }
+
+            TRIANGLE -> {
+                val path = Path()
+                path.moveTo((startX + stopX) / 2, startY)
+                path.lineTo(stopX, stopY)
+                path.lineTo(startX, stopY)
+                path.close()
+                canvas.drawPath(path, paint)
+            }
+
         }
     }
 }
