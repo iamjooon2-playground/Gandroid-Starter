@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResultActivity"
-            android:label="Second Activity" />
+            android:name=".SecondActivity"
+            android:label="Result Activity" />
 
     </application>
 
